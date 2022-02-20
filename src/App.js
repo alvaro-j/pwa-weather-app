@@ -1,6 +1,7 @@
 import React from "react";
 
 import { fetchWeather } from "./api/fetchWeather";
+import WeatherLocation from "./components/WeatherLocation";
 
 const App = () => {
 	const [query, setQuery] = React.useState("");
@@ -11,7 +12,6 @@ const App = () => {
 			const data = await fetchWeather(query);
 			setWeather(data);
 			setQuery("");
-			console.log(data);
 		}
 	};
 
@@ -24,6 +24,7 @@ const App = () => {
 				onChange={(e) => setQuery(e.target.value)}
 				onKeyPress={search}
 			/>
+			{weather.main && <WeatherLocation weather={weather} />}
 		</main>
 	);
 };
