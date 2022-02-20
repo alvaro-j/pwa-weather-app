@@ -4,10 +4,13 @@ import { fetchWeather } from "./api/fetchWeather";
 
 const App = () => {
 	const [query, setQuery] = React.useState("");
+	const [weather, setWeather] = React.useState({});
 
 	const search = async (e) => {
 		if (e.key === "Enter") {
 			const data = await fetchWeather(query);
+			setWeather(data);
+			setQuery("");
 			console.log(data);
 		}
 	};
@@ -19,7 +22,7 @@ const App = () => {
 				placeholder="Search..."
 				value={query}
 				onChange={(e) => setQuery(e.target.value)}
-        onKeyPress={search}
+				onKeyPress={search}
 			/>
 		</main>
 	);
