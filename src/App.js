@@ -17,6 +17,7 @@ const App = () => {
 
 	return (
 		<main>
+			<h1>PWA Weather App</h1>
 			<input
 				autoFocus
 				type="text"
