@@ -18,6 +18,7 @@ const App = () => {
 	return (
 		<main>
 			<input
+				autoFocus
 				type="text"
 				placeholder="Search..."
 				value={query}
