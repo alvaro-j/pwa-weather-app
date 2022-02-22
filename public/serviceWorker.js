@@ -17,10 +17,25 @@ self.addEventListener("install", (e) => {
 self.addEventListener("fetch", (e) => {
 	e.respondeWith(
 		caches.match(e.request).then(() => {
-			return fetch(e.request).catch(() => caches.match("offline.html"));
+			return fetch(e.request).catch(() => caches.match("offline.html")); // if there is no internet, it displays the offline html
 		})
 	);
 });
 
 // activate
-self.addEventListener("activate", (e) => {});
+self.addEventListener("activate", (e) => {
+	const cacheWhitelist = [];
+	cacheWhitelist.push(CACHE_NAME); // keeps the cache
+
+	e.waitUntil(
+		caches.keys().then((cacheNames) => {
+			Promise.all(
+				cacheNames.map((cacheName) => {
+					if (!cacheWhitelist.includes(cacheName)) {
+						return caches.delete(cacheNames); // delete all the previous versions of the cache
+					}
+				})
+			);
+		})
+	);
+});
