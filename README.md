@@ -38,8 +38,16 @@ PWA weather app made with React and OpenWeather API. It shows an offline page wh
 
 ### What I learned📝
 
-- Transform a normal web app into a <strong>PWA</strong>:
+- Set up the <strong>Service Worker</strong> file:
 ```js
+self.addEventListener("install", (e) => {
+	e.waitUntil(
+		caches.open(CACHE_NAME).then((cache) => {
+			console.log("opened cache");
+			return cache.addAll(urlsToCache);
+		})
+	);
+});
 ```
 ### Useful resources
 
