@@ -1,6 +1,8 @@
 # PWA Weather App
 
+<p align="center">
 ![image](https://user-images.githubusercontent.com/86482525/157239881-09325d75-cb40-4d37-a826-ed3a03778b13.png)
+</p>
 
 ## Getting Started with Create React App ⚛
 
